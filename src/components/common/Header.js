@@ -1,47 +1,46 @@
-import React from 'react'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
-import Drawer from '@material-ui/core/Drawer'
+import React from "react"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import AppBar from "@material-ui/core/AppBar"
+import Toolbar from "@material-ui/core/Toolbar"
+import IconButton from "@material-ui/core/IconButton"
+import Drawer from "@material-ui/core/Drawer"
 
-import List from '@material-ui/core/List'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import ListItem from '@material-ui/core/ListItem'
+import List from "@material-ui/core/List"
+import ListItemIcon from "@material-ui/core/ListItemIcon"
+import ListItemText from "@material-ui/core/ListItemText"
+import ListItem from "@material-ui/core/ListItem"
 
 // Router import
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 
 // Icon imports
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import MenuIcon from '@material-ui/icons/Menu'
-import HomeIcon from '@material-ui/icons/Home'
-import ContactIcon from '@material-ui/icons/Contacts'
-import SchoolIcon from '@material-ui/icons/School'
-import logo from './../../images/logo.png'
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft"
+import ChevronRightIcon from "@material-ui/icons/ChevronRight"
+import MenuIcon from "@material-ui/icons/Menu"
+import HomeIcon from "@material-ui/icons/Home"
+import SchoolIcon from "@material-ui/icons/School"
+import logo from "./../../images/logo.png"
 
-import deepPurple from '@material-ui/core/colors/deepPurple'
+import deepPurple from "@material-ui/core/colors/deepPurple"
 
-import { OPEN_MENU, CLOSE_MENU } from '../../actions'
-import { connect } from 'react-redux'
+import { OPEN_MENU, CLOSE_MENU } from "../../actions"
+import { connect } from "react-redux"
 
 const drawerWidth = 240
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   hide: {
-    display: 'none'
+    display: "none",
   },
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
+    transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
-    backgroundColor: deepPurple[800]
+    backgroundColor: deepPurple[800],
   },
   // appBarShift: {
   //   width: `calc(100% - ${drawerWidth}px)`,
@@ -53,26 +52,26 @@ const useStyles = makeStyles(theme => ({
   // },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0
+    flexShrink: 0,
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
   },
   drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end'
+    justifyContent: "flex-end",
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
+    transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth
+    marginLeft: -drawerWidth,
   },
   // contentShift: {
   //   transition: theme.transitions.create('margin', {
@@ -82,12 +81,12 @@ const useStyles = makeStyles(theme => ({
   //   marginLeft: 0
   // },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
   },
-  link: { textDecoration: 'none', color: 'black' }
+  link: { textDecoration: "none", color: "black" },
 }))
 
 function Header(props) {
@@ -104,14 +103,15 @@ function Header(props) {
   }
 
   return (
-    <header>
+    <header style={{ height: "64px" }}>
       <AppBar position="fixed" color="primary" className={classes.appBar}>
         <Toolbar>
           <IconButton
             onClick={toggleNavigation}
             edge="start"
             color="inherit"
-            className={classes.menuButton}>
+            className={classes.menuButton}
+          >
             <MenuIcon />
           </IconButton>
           <img src={logo} className="center-logo logo" alt="" />
@@ -123,11 +123,12 @@ function Header(props) {
         open={props.open}
         className={classes.drawer}
         classes={{
-          paper: classes.drawerPaper
-        }}>
+          paper: classes.drawerPaper,
+        }}
+      >
         <div className={classes.drawerHeader}>
           <IconButton onClick={toggleNavigation}>
-            {theme.direction === 'ltr' ? (
+            {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
             ) : (
               <ChevronRightIcon />
@@ -137,7 +138,8 @@ function Header(props) {
         <div
           role="presentation"
           onClick={toggleNavigation}
-          onKeyDown={toggleNavigation}>
+          onKeyDown={toggleNavigation}
+        >
           <List>
             <Link to="/" className={classes.link}>
               <ListItem button key="0">
@@ -156,15 +158,6 @@ function Header(props) {
                 <ListItemText primary="Certifications" />
               </ListItem>
             </Link>
-
-            <Link to="/contact" className={classes.link}>
-              <ListItem button key="1">
-                <ListItemIcon>
-                  <ContactIcon />
-                </ListItemIcon>
-                <ListItemText primary="Contact Me" />
-              </ListItem>
-            </Link>
           </List>
         </div>
       </Drawer>
@@ -172,8 +165,8 @@ function Header(props) {
   )
 }
 
-const mapStateToProps = state => ({
-  open: state.menu.open
+const mapStateToProps = (state) => ({
+  open: state.menu.open,
 })
 
 export default connect(mapStateToProps)(Header)

@@ -1,37 +1,68 @@
-import React from 'react';
+import React, { useState } from "react"
 
-import { connect } from 'react-redux';
+import Typography from "@material-ui/core/Typography"
+import Container from "@material-ui/core/Container"
+import Card from "@material-ui/core/Card"
+import CardContent from "@material-ui/core/CardContent"
 
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-
-import styles from './styles';
+import styles from "./styles"
 
 function SkillList(props) {
+  const [skills] = useState({
+    languages: ["PHP", "JavaScript", "Python"],
+    databases: ["MongoDB", "MySQL", "PostgresQL", "Firebase"],
+    frameworks: ["React.js", "Node.js", "React Native", "Socket.js"],
+  })
+
   return (
     <div>
       <Container maxWidth="md">
+        <Typography variant="h2" style={{ marginTop: "2rem" }} paragraph>
+          Skills
+        </Typography>
         <Card style={styles.card}>
           <CardContent>
-            <Typography variant="h4" paragraph>
-              Skills
+            <Typography variant="h5" paragraph>
+              Languages
             </Typography>
-            {props.skillList.map((skill, index) => (
-              <Typography variant="body2" key={index}>
-                {skill}
-              </Typography>
-            ))}
+            <Typography variant="body1">
+              {skills.languages.map(
+                (skill, index) =>
+                  `${skill}${index < skills.languages.length - 1 ? "," : ""} `
+              )}
+            </Typography>
+          </CardContent>
+          <CardContent>
+            <Typography variant="h5" mt={9} paragraph>
+              Databases
+            </Typography>
+            <Typography variant="body1">
+              {skills.databases.map(
+                (database, index) =>
+                  `${database}${
+                    index < skills.databases.length - 1 ? "," : ""
+                  } `
+              )}
+            </Typography>
+          </CardContent>
+
+          <CardContent>
+            <Typography variant="h5" mt={9} paragraph>
+              Frameworks
+            </Typography>
+            <Typography variant="body1">
+              {skills.frameworks.map(
+                (framework, index) =>
+                  `${framework}${
+                    index < skills.frameworks.length - 1 ? "," : ""
+                  } `
+              )}
+            </Typography>
           </CardContent>
         </Card>
       </Container>
     </div>
-  );
+  )
 }
 
-const mapStateToProps = state => ({
-  skillList: state.skills.skillList
-});
-
-export default connect(mapStateToProps)(SkillList);
+export default SkillList

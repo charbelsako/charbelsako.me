@@ -1,15 +1,74 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 
-import { connect } from 'react-redux'
-import Typography from '@material-ui/core/Typography'
-import Project from './Project'
+import Typography from "@material-ui/core/Typography"
+import Project from "./Project"
+
+// images
+import signup from "../devnetwork/signup.png"
+import addEducation from "../devnetwork/add-education.png"
+import addExperience from "../devnetwork/add-experience.png"
+import dashboard from "../devnetwork/dashboard.png"
+import homepage from "../devnetwork/homepage.png"
+
+import login from "../client-panel/login.png"
+import clientView from "../client-panel/client-view.png"
+import clientDashboard from "../client-panel/dashboard.png"
+import addClient from "../client-panel/add-client.png"
 
 class ProjectList extends Component {
+  state = {
+    projects: [
+      {
+        title: "Dev Connector",
+        description: `A website that allows developers to communicate with
+        each other and make an online portfolio.`,
+        live: "https://hidden-bayou-89767.herokuapp.com/",
+        code: "https://github.com/charbelsako/devnetwork",
+        sliderInfo: [
+          {
+            label: "Homepage",
+            imgPath: homepage,
+          },
+          {
+            label: "Dashboard",
+            imgPath: dashboard,
+          },
+          {
+            label: "Signup page",
+            imgPath: signup,
+          },
+          {
+            label: "Add Experience",
+            imgPath: addExperience,
+          },
+          {
+            label: "Add Education",
+            imgPath: addEducation,
+          },
+        ],
+      },
+      {
+        title: "Client Panel",
+        description: `This project is intended to help users that need to keep track of what
+        money they owe people, and vice versa.`,
+        live: "https://react-client-panel-afaa7.firebaseapp.com",
+        code: "https://github.com/charbelsako/client-panel",
+        sliderInfo: [
+          { label: "Login", imgPath: login },
+          { label: "Dashboard", imgPath: clientDashboard },
+          { label: "Client View", imgPath: clientView },
+          { label: "Add client", imgPath: addClient },
+        ],
+      },
+      // { title: 'title1', description: 'desc' }
+    ],
+  }
+
   render() {
     return (
       <div>
-        <Typography variant="h4">My Projects</Typography>
-        {this.props.projectList.map((project, index) => (
+        <Typography variant="h2">My Projects</Typography>
+        {this.state.projects.map((project, index) => (
           <Project data={project} key={index} />
         ))}
       </div>
@@ -17,8 +76,4 @@ class ProjectList extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  projectList: state.projects.projectList
-})
-
-export default connect(mapStateToProps)(ProjectList)
+export default ProjectList
