@@ -21,7 +21,6 @@ function App() {
         <Switch>
           <Route exact path="/certification" component={CertificationList} />
           <Route exact path="/" component={Home} />
-          {/* <Route component={Home} /> */}
           <Route path="*" exact component={NotFound} />
         </Switch>
         <Footer />

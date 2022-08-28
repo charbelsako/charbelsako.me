@@ -10,17 +10,26 @@ import styles from "./styles"
 function SkillList(props) {
   const [skills] = useState({
     languages: ["PHP", "JavaScript", "Python"],
-    databases: ["MongoDB", "MySQL", "PostgresQL", "Firebase"],
-    frameworks: ["React.js", "Node.js", "React Native", "Socket.js"],
+    databases: ["MongoDB", "Firebase", "MySQL", "PostgresQL"],
+    frameworks: ["React.js", "Node.js", "React Native"],
+    libraries: [
+      "Bootstrap",
+      "Material UI",
+      "Socket.js",
+      "ACL",
+      "Express",
+      "Passport",
+      "lodash",
+    ],
   })
 
   return (
     <div>
-      <Container maxWidth="md">
+      <Container maxWidth="md" style={{ padding: 0 }}>
         <Typography variant="h2" style={{ marginTop: "2rem" }} paragraph>
           Skills
         </Typography>
-        <Card style={styles.card}>
+        <Card style={styles.card} variant="outlined">
           <CardContent>
             <Typography variant="h5" paragraph>
               Languages
@@ -56,6 +65,18 @@ function SkillList(props) {
                   `${framework}${
                     index < skills.frameworks.length - 1 ? "," : ""
                   } `
+              )}
+            </Typography>
+          </CardContent>
+
+          <CardContent>
+            <Typography variant="h5" mt={9} paragraph>
+              Libraries
+            </Typography>
+            <Typography variant="body1">
+              {skills.libraries.map(
+                (library, index) =>
+                  `${library}${index < skills.libraries.length - 1 ? "," : ""} `
               )}
             </Typography>
           </CardContent>

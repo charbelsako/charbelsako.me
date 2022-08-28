@@ -4,7 +4,7 @@ const globalStyles = {
   link: { textDecoration: "none", color: "white" },
   content: { marginTop: 20, textAlign: "center", marginBottom: 5 },
   mainContent: { textAlign: "center", marginBottom: 60 },
-  card: { margin: "2rem", padding: "1rem" },
+  card: { margin: "0.5rem", padding: "1rem" },
   center: { justifyContent: "center" },
   media: { height: 140 },
   paragraph: { margin: 10 },

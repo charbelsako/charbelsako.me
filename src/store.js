@@ -5,8 +5,6 @@ const initialState = {
   menu: {
     open: false,
   },
-
-  qualifications: ["Team worker", "Communication", ""],
 }
 
 const store = createStore(
