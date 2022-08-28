@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { connect } from "react-redux"
 import Certification from "./Certification"
 import { Typography, Container } from "@material-ui/core"
 import styles from "./styles"
@@ -39,7 +38,7 @@ class CertificationList extends Component {
         <Container>
           <Typography variant="h2">Certifications</Typography>
           {this.state.certifications.map((cert, index) => (
-            <Certification data={cert} />
+            <Certification data={cert} key={index} />
           ))}
         </Container>
       </div>
@@ -47,8 +46,4 @@ class CertificationList extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  certs: state.certifications.certificationList,
-})
-
-export default connect(mapStateToProps)(CertificationList)
+export default CertificationList
